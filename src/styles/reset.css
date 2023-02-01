@@ -4,7 +4,7 @@
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap'); 
-@import url('https://fonts.cdnfonts.com/css/futura-pt');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap');
 
                 
 html, body, div, span, applet, object, iframe,
@@ -34,6 +34,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-family: 'Rubik', sans-serif;
 }
 ol, ul {
 	list-style: none;
