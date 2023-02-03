@@ -13,6 +13,18 @@ import categories from './categories';
 
 export default function Header() {
     const [ search, setSearch] = useState('');
+    const [ subCategories, setSubCategories] = useState('');
+    const [ flag, setFlag] = useState(false);
+
+    const showCategories = (category) => {
+        console.log(category);
+        setFlag(!flag);
+        const arr = categories.find(item => item.category = category);
+        
+        console.log(subCategories)
+        setSubCategories(arr);
+
+    }
 
     return (
         <>
@@ -39,25 +51,28 @@ export default function Header() {
                 </div>
             </NavBar>
             <Categories>
-                <div>
+                <div onClick={() => showCategories('skate')}>
                     <span>Skate </span><AiOutlineDownCircle size={20}/>
                 </div>
-                <div>
+                <div onClick={() => showCategories('acessories')}>
                     <span>Acessórios </span><AiOutlineDownCircle size={20}/>
                 </div>
-                <div>
+                <div onClick={() => showCategories('clothes')}>
                     <span>Roupas </span><AiOutlineDownCircle size={20}/>
                 </div>
-                <div>
+                <div onClick={() => showCategories('sneakers')}>
                     <span>Tênis </span><AiOutlineDownCircle size={20}/>
                 </div>
-                <div>
+                <div onClick={() => showCategories('brands')}>
                     <span>Marcas </span><AiOutlineDownCircle size={20}/>
                 </div>
                 <div>
                     <span>SALE </span><AiOutlineDownCircle size={20}/>
                 </div>
             </Categories>  
+            {flag && subCategories.items.map((item) => 
+                <span>{item}</span>
+            )}
         </>
     )
 }
