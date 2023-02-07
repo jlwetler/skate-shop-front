@@ -8,7 +8,7 @@ const categories = [{
     id:2, 
     category:'acessories', 
     items: [
-        "Boné", "Gorro", "Mochila", "Cinto", "Shoulder Bag", "Chinelo"
+        "Boné", "Gorro", "Mochila", "Cinto", "Shoulder Bag", "Chinelo", ""
     ]}, {
     id:3, 
     category:'clothes', 

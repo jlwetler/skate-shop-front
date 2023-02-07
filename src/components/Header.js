@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import logo from '../images/logo.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 import { 
     AiOutlineSearch, 
     AiOutlineWhatsApp, 
@@ -9,21 +11,29 @@ import {
     AiOutlineShoppingCart,
     AiOutlineDownCircle 
 } from "react-icons/ai";
-import categories from './categories';
+//import categories from './categories';
 
 export default function Header() {
     const [ search, setSearch] = useState('');
     const [ subCategories, setSubCategories] = useState('');
-    const [ flag, setFlag] = useState(false);
-
+    const [categories, setCategories] = useState([]);
+    
+    useEffect(()=> {axios.get('http://localhost:4000/categories')
+        .then((response) => {
+            setCategories(response.data);
+        })
+        .catch((error)=> {
+            console.log(error);
+        })
+    },[]);
+    
     const showCategories = (category) => {
-        console.log(category);
+        /*navigate('/categoria');
         setFlag(!flag);
         const arr = categories.find(item => item.category = category);
         
         console.log(subCategories)
-        setSubCategories(arr);
-
+        setSubCategories(arr);*/
     }
 
     return (
@@ -50,29 +60,21 @@ export default function Header() {
                     <AiOutlineShoppingCart size={30} />
                 </div>
             </NavBar>
-            <Categories>
-                <div onClick={() => showCategories('skate')}>
-                    <span>Skate </span><AiOutlineDownCircle size={20}/>
-                </div>
-                <div onClick={() => showCategories('acessories')}>
-                    <span>Acessórios </span><AiOutlineDownCircle size={20}/>
-                </div>
-                <div onClick={() => showCategories('clothes')}>
-                    <span>Roupas </span><AiOutlineDownCircle size={20}/>
-                </div>
-                <div onClick={() => showCategories('sneakers')}>
-                    <span>Tênis </span><AiOutlineDownCircle size={20}/>
-                </div>
+            <CategoriesBar>
+                {categories.map((category)=>
+                    <Link to={`/categoria/${category.name}`} key={category.id}>
+                        <div>
+                            <span>{category.name}</span><AiOutlineDownCircle size={20}/>
+                        </div>
+                    </Link>
+                )}
                 <div onClick={() => showCategories('brands')}>
                     <span>Marcas </span><AiOutlineDownCircle size={20}/>
                 </div>
                 <div>
                     <span>SALE </span><AiOutlineDownCircle size={20}/>
                 </div>
-            </Categories>  
-            {flag && subCategories.items.map((item) => 
-                <span>{item}</span>
-            )}
+            </CategoriesBar>  
         </>
     )
 }
@@ -119,7 +121,7 @@ const SearchBar = styled.div`
       }    
 `;
 
-const Categories=styled.div`
+const CategoriesBar = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
