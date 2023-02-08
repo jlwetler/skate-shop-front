@@ -84,7 +84,10 @@ export default function Cart() {
                                     R$ {(product.price*product.quantity/100).toFixed(2)}
                                 </p>  
                             </span>
-                            <BiTrash size={25} onClick={() => deleteItem(product)}/>
+                            <TrashIcon
+                                size={25}  
+                                onClick={() => deleteItem(product)}
+                            />
                         </div>
                     )}
                 </section>
@@ -171,6 +174,11 @@ const CartBox = styled.div `
         width: 12vw;
         text-align: right;
     }
+`;
+
+const TrashIcon = styled(BiTrash)`
+    cursor: pointer;
+    margin-left: 15px;
 `;
 
 const TotalOrder = styled.div `
