@@ -3,6 +3,7 @@ import { useState } from 'react';
 import logo from '../images/logo.png';
 import pagamento from '../images/pagamento.png';
 import entrega from '../images/entrega.png';
+import { AiOutlineWhatsApp, AiOutlineInstagram, AiOutlineFacebook } from "react-icons/ai";
 
 export default function Footer() {
     const [name, setName] = useState("");
@@ -61,6 +62,11 @@ export default function Footer() {
             <div>CONTATO</div>
             <div>(XX)-(XXXXX-XXXX)</div>
             <div>skate@shop.com.br</div>
+            <div>
+                <AiOutlineWhatsApp size={30} />
+                <AiOutlineInstagram size={30} />
+                <AiOutlineFacebook size={30} />
+            </div>
         </Box>
     </Container>
 }

@@ -49,7 +49,7 @@ export default function Sidebar ({category, subCategories, brands, setProducts }
             {category}
         </div>
         {subCategories.map(sub => 
-            <div className='sub-category' onClick={() => {selectSubCategory(sub.name)}}>
+            <div className='sub-category' onClick={() => {selectSubCategory(sub.name)}} key={sub.id}>
             {sub.name}
             </div>
         )}
@@ -63,14 +63,14 @@ export default function Sidebar ({category, subCategories, brands, setProducts }
             className='price'
             onChange={e => setMaxPrice(e.target.value)}
         />
-        <output for="priceRange" id="priceOutput">
+        <output htmlFor="priceRange" id="priceOutput">
             R${maxPrice}
         </output>
         <div className='title brands' onClick={() => setShowBrands(!showBrands)}>
             Marcas <AiOutlineCaretDown />
         </div>
         {showBrands && brands.map((sub,i) => 
-            <div className='options'>
+            <div className='options' key={brands.id}>
                 <input 
                     type='checkbox' 
                     checked={checked[i]} 

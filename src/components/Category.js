@@ -14,26 +14,28 @@ export default function Category({ setProduct }) {
     const [products, setProducts] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(()=> {axios.get(`http://localhost:4000/subcategories/${category}`)
+    useEffect(()=> {
+        axios.get(`http://localhost:4000/subcategories/${category}`)
         .then((response) => {
             setSubCategories(response.data);
         })
     },[category]);
 
-    useEffect(()=> {axios.get('http://localhost:4000/brands')
-    .then((response) => {
+    useEffect(()=> {
+        axios.get('http://localhost:4000/brands')
+        .then((response) => {
         setBrands(response.data);
     })
     },[]);
 
-    useEffect(()=> {axios.get(`http://localhost:4000/products/${category}`)
-    .then((response) => {
+    useEffect(()=> {
+        axios.get(`http://localhost:4000/products/${category}`)
+        .then((response) => {
         setProducts(response.data);
     })
     },[category]);
 
-    function addToCart(p) {
-        console.log(p);
+    function openProduct(p) {
         setProduct(p);
         navigate(`/produto/${p.name}`)
     }
@@ -62,9 +64,9 @@ export default function Category({ setProduct }) {
                         
                     </header>
                     {products.map(p => 
-                        <section>
-                            <img src={p.image} alt='product-logo' key={p.id} />
-                            <div>
+                        <section key={p.id}>
+                            <img src={p.image} alt='product-logo' onClick={() => openProduct(p)}/>
+                            <div style={{height: 25}}>
                                 {p.name}
                             </div>
                             <div style={{color: '#961322'}}>
@@ -73,7 +75,7 @@ export default function Category({ setProduct }) {
                             <div style={{color: '#444444'}}>
                                 ou em até 6x de R$ {(p.price/600).toFixed(2)}
                             </div>
-                            <button onClick={() => addToCart(p)}>
+                            <button onClick={() => openProduct(p)}>
                                 <AiOutlineShoppingCart/> Adicionar ao carrinho
                             </button>
                         </section>

@@ -5,13 +5,10 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { 
     AiOutlineSearch, 
-    AiOutlineWhatsApp, 
-    AiOutlineInstagram,
     AiOutlineUser,
     AiOutlineShoppingCart,
     AiOutlineDownCircle 
 } from "react-icons/ai";
-//import categories from './categories';
 
 export default function Header() {
     const [ search, setSearch] = useState('');
@@ -53,12 +50,20 @@ export default function Header() {
                     />
                     <AiOutlineSearch size={30} />
                 </SearchBar>
-                <div>
-                    <AiOutlineWhatsApp size={30} />
-                    <AiOutlineInstagram size={30} />
-                    <AiOutlineUser size={30} />
-                    <AiOutlineShoppingCart size={30} />
-                </div>
+                <section>
+                    <div>
+                        <Link to={'/login'}>
+                            <AiOutlineUser size={30} />
+                        </Link>
+                        <p>Minha conta</p>
+                    </div>
+                    <div>
+                        <Link to={'/carrinho'}>
+                            <AiOutlineShoppingCart size={30} />
+                        </Link>
+                        <p>Meu carrinho</p>
+                    </div>
+                </section>
             </NavBar>
             <CategoriesBar>
                 {categories.map((category)=>
@@ -99,20 +104,31 @@ const NavBar = styled.div `
     img {
         width: 120px;
     }
+    section {
+        display: flex;
+        width: 140px;
+        div {
+            text-align:center;
+        }
+        a {
+            color: #000;
+            cursor: pointer;
+        }
+    }
 `;
 
 const SearchBar = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 500px;
+    width: 450px;
     height: 40px;
     border: 2px solid #000;
     border-radius: 50px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.5);
     input {
         border-radius: 50px;
-        width: 450px;
+        width: 400px;
         height: 36px;
         border: none;
     }
