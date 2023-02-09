@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import logo from '../images/logo.png';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { 
     AiOutlineSearch, 
@@ -14,6 +14,7 @@ export default function Header() {
     const [ search, setSearch] = useState('');
     const [ subCategories, setSubCategories] = useState('');
     const [categories, setCategories] = useState([]);
+    const navigate = useNavigate();
     
     useEffect(()=> {axios.get('http://localhost:4000/categories')
         .then((response) => {
@@ -23,14 +24,10 @@ export default function Header() {
             console.log(error);
         })
     },[]);
-    
-    const showCategories = (category) => {
-        /*navigate('/categoria');
-        setFlag(!flag);
-        const arr = categories.find(item => item.category = category);
-        
-        console.log(subCategories)
-        setSubCategories(arr);*/
+
+    function searchItem() {
+        console.log(search);
+        navigate(`/search/${search}`);
     }
 
     return (
@@ -48,7 +45,7 @@ export default function Header() {
                         onChange={e => setSearch(e.target.value)} 
                         required
                     />
-                    <div>
+                    <div onClick={searchItem}>
                         <AiOutlineSearch size={30} />
                     </div>
                     
@@ -76,7 +73,7 @@ export default function Header() {
                         </div>
                     </Link>
                 )}
-                <div onClick={() => showCategories('brands')}>
+                <div>
                     <span>Marcas </span><AiOutlineDownCircle size={18}/>
                 </div>
                 <div>

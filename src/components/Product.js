@@ -4,14 +4,15 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
+import ProductContext from "../contexts/ProductContext";
 import CartContext from '../contexts/CartContext';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
-export default function Product({ product }) {
-    const { productId } = useParams();
+export default function Product() {
     const [ brand, setBrand ] = useState({});
     const [quantity, setQuantity] = useState(1);
     const { cart, setCart} = useContext(CartContext);
+    const { product} = useContext(ProductContext);
     
     if(quantity < 1) setQuantity(1);
     if(quantity > product.stock) setQuantity(product.stock);
