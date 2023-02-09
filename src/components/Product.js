@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from "react-router-dom";
 import axios from 'axios';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,7 +11,7 @@ export default function Product() {
     const [ brand, setBrand ] = useState({});
     const [quantity, setQuantity] = useState(1);
     const { cart, setCart} = useContext(CartContext);
-    const { product} = useContext(ProductContext);
+    const { product } = useContext(ProductContext);
     
     if(quantity < 1) setQuantity(1);
     if(quantity > product.stock) setQuantity(product.stock);

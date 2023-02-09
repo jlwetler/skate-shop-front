@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import { useState } from 'react';
 import { AiOutlineCaretDown } from "react-icons/ai";
-import Products from './ProductReleases';
 
 export default function Sidebar ({category, subCategories, brands, setProducts, orderBy }) {
     const [ maxPrice, setMaxPrice] = useState(1500);
