@@ -12,6 +12,7 @@ export default function Category({ setProduct }) {
     const [ subCategories, setSubCategories] = useState([]);
     const [brands, setBrands] = useState([]);
     const [products, setProducts] = useState([]);
+    const [orderBy, setOrderBy] = useState('');
     const navigate = useNavigate();
 
     useEffect(()=> {
@@ -40,6 +41,10 @@ export default function Category({ setProduct }) {
         navigate(`/produto/${p.name}`)
     }
     
+    function handleOrder(e) {
+        setOrderBy(e.target.value);
+    }
+
     return (
         <>
             <Header />
@@ -49,19 +54,20 @@ export default function Category({ setProduct }) {
                     subCategories={subCategories}
                     brands={brands}
                     setProducts={setProducts}
+                    orderBy={orderBy}
                 />
                 <Products>
                     <header>
                         {category}
                         <span>
-                            Sort by:  
-                            <select>
-                                <option>Maior preço</option>
+                            Buscar por:  
+                            <select onChange={handleOrder} value={orderBy}>
+                                <option></option>
                                 <option>Menor preço</option>
+                                <option>Maior preço</option>
                                 <option>Nome (A-Z)</option>
                             </select>
                         </span>
-                        
                     </header>
                     {products.map(p => 
                         <section key={p.id}>
@@ -106,8 +112,9 @@ const Products = styled.div`
         margin: 20px;
     }
     header {
-        padding: 15px 0;
+        padding: 10px 0;
         width: 75vw;
+        height: 40px;
         font-size: 25px;
         display: flex;
         justify-content: space-between;
@@ -128,5 +135,9 @@ const Products = styled.div`
         height: 35px;
         border-radius: 20px;
         cursor: pointer;
+    }
+    select {
+        margin-left: 10px;
+        border-radius: 7px;
     }
 `;

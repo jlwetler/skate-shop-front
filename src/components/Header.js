@@ -48,7 +48,10 @@ export default function Header() {
                         onChange={e => setSearch(e.target.value)} 
                         required
                     />
-                    <AiOutlineSearch size={30} />
+                    <div>
+                        <AiOutlineSearch size={30} />
+                    </div>
+                    
                 </SearchBar>
                 <section>
                     <div>
@@ -69,15 +72,15 @@ export default function Header() {
                 {categories.map((category)=>
                     <Link to={`/categoria/${category.name}`} key={category.id}>
                         <div>
-                            <span>{category.name}</span><AiOutlineDownCircle size={20}/>
+                            <span>{category.name}</span><AiOutlineDownCircle size={18}/>
                         </div>
                     </Link>
                 )}
                 <div onClick={() => showCategories('brands')}>
-                    <span>Marcas </span><AiOutlineDownCircle size={20}/>
+                    <span>Marcas </span><AiOutlineDownCircle size={18}/>
                 </div>
                 <div>
-                    <span>SALE </span><AiOutlineDownCircle size={20}/>
+                    <span>SALE </span><AiOutlineDownCircle size={18}/>
                 </div>
             </CategoriesBar>  
         </>
@@ -96,13 +99,13 @@ const Top = styled.div`
 
 const NavBar = styled.div `
     width: 100vw;
-    height: 160px;
+    height: 90px;
     padding: 10px 20px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     img {
-        width: 120px;
+        width: 80px;
     }
     section {
         display: flex;
@@ -134,7 +137,13 @@ const SearchBar = styled.div`
     }
     input:focus {
         outline: none;
-      }    
+      }
+    div {
+        width: 40px;
+        text-align: center;
+        border-left: 1px solid #000;
+        cursor: pointer;
+    }    
 `;
 
 const CategoriesBar = styled.div`

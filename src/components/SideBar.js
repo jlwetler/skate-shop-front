@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { AiOutlineCaretDown } from "react-icons/ai";
 import Products from './ProductReleases';
 
-export default function Sidebar ({category, subCategories, brands, setProducts }) {
+export default function Sidebar ({category, subCategories, brands, setProducts, orderBy }) {
     const [ maxPrice, setMaxPrice] = useState(1500);
     const [ showBrands, setShowBrands] = useState(false);
     const [subCategory, setSubCategory] = useState('');
@@ -29,10 +29,10 @@ export default function Sidebar ({category, subCategories, brands, setProducts }
     const filteredSearch = () => {
         const queryString = encodeURIComponent(JSON.stringify(selectedBrands));
         const price = maxPrice*100;
-        console.log(queryString);
-        console.log(price);
-        console.log(subCategory);
-        axios.get(`http://localhost:4000/filter/products/${category}?subCategory=${subCategory}&query=${queryString}&price=${price}`)
+        const order = orderBy !== '' ? orderBy.replace(' ','') : ''
+        console.log(order);
+    console.log(queryString)
+        axios.get(`http://localhost:4000/filter/products/${category}?subCategory=${subCategory}&query=${queryString}&price=${price}&order=${order}`)
         .then((response) => {
             setProducts(response.data);
         })
