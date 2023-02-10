@@ -52,7 +52,7 @@ export default function Header() {
                 </SearchBar>
                 <section>
                     <div>
-                        <Link to={'/login'}>
+                        <Link to={'/user'}>
                             <AiOutlineUser size={30} />
                         </Link>
                         <p>Minha conta</p>

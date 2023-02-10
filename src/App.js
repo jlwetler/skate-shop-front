@@ -13,10 +13,11 @@ import Search from './components/Search';
 import UserContext from './contexts/UserContext';
 import CartContext from './contexts/CartContext';
 import ProductContext from './contexts/ProductContext';
+import UserAccount from './components/UserAccount';
 
 export default function App() {
   const [product, setProduct] = useState({});
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState([]);
   const [cart, setCart] = useState([]);
 
   return <>
@@ -27,6 +28,7 @@ export default function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='login' element={<Login />} />
+              <Route path='user' element={<UserAccount />} />
               <Route path='categoria/:category' element={<Category />} />
               <Route path='produto/:product' element={<Product />} />
               <Route path='carrinho' element={<Cart />} />

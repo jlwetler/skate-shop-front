@@ -86,7 +86,7 @@ export default function CartContent() {
           ))}
         </section>
         <TotalOrder>
-          <ul className="ss">
+          <ul>
             <li>
               <nav>Subtotal :</nav>
               <nav>R$ {(totalPrice / 100).toFixed(2)}</nav>
