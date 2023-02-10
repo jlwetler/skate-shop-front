@@ -5,7 +5,7 @@ import Loading from './Loading';
 import { useState, useContext } from "react";
 import styled from 'styled-components';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import UserContext from "../contexts/UserContext";
 import logo from '../images/logo.png';
 import SignUp from "./SignUp";

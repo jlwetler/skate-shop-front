@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { useState, useEffect, useContext } from 'react';
 import UserContext from '../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
-import Login from './Login';
 import Header from './Header';
 import Footer from './Footer';
-import { FaUser, FaUserCircle, FaStar } from "react-icons/fa";
-import { GoListUnordered } from "react-icons/go";
+import UserBox from './components/UserBox'
+import { FaUserCircle } from "react-icons/fa";
+
 
 export default function UserAccount () {
     const { user } = useContext(UserContext);
@@ -17,14 +17,7 @@ export default function UserAccount () {
     return <>
         <Header/>
             <UserContainer>
-                <UserBox>
-                <section>
-                    <h1> <FaUser size={20} /> {user.name}</h1>
-                    <p><FaUserCircle /> Minha conta</p>
-                    <p><GoListUnordered/> Meus pedidos</p>
-                    <p><FaStar/> Lista de desejos</p>
-                </section>
-                </UserBox>
+                <UserBox name={user.name} />
                 <UserInfo>
                     <section>
                         <header><FaUserCircle /> Minha conta</header>
@@ -58,26 +51,6 @@ const UserContainer = styled.div`
         border-radius: 30px;
         border-box: 1px solid #000;
 `;
-
-const UserBox = styled.div `
-    margin: 8vh 5vw 0 10vw;
-    display: flex;
-    height: 22vh;
-    section {
-        width: 18vw;
-    }
-    h1 {
-        width: 16vw;
-        padding-bottom: 10px;
-        font-size: 18px;
-        margin-bottom: 10px;
-        border-bottom: 1px solid #000;
-    }
-    p {
-        font-size: 16px;
-        margin-bottom: 10px;
-    }
-`
 
 const UserInfo = styled.div`
     margin: 8vh 0;
