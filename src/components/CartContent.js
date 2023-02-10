@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
 import CartContext from '../contexts/CartContext';
 import { BiTrash } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";

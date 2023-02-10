@@ -1,6 +1,6 @@
 import axios from 'axios';
 import SignContainer from './SignContainer';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Loading from './Loading';
 

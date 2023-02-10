@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import logo from '../images/logo.png';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import UserContext from '../contexts/UserContext';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { 
@@ -14,6 +15,7 @@ export default function Header() {
     const [ search, setSearch] = useState('');
     const [ subCategories, setSubCategories] = useState('');
     const [categories, setCategories] = useState([]);
+    const { user } = useContext(UserContext);
     const navigate = useNavigate();
     
     useEffect(()=> {axios.get('http://localhost:4000/categories')
@@ -30,13 +32,17 @@ export default function Header() {
         navigate(`/search/${search}`);
     }
 
+    function account() {
+        user.length === 0 ? navigate('/login') : navigate('/user');
+    }
+
     return (
         <>
             <Top>
                 <span>Frete grátis nas compras acima de R$299,99 para todo o Brasil</span>
             </Top>
             <NavBar>
-                <img src={logo} alt='logo' />
+                <img src={logo} alt='logo' onClick={() => navigate('/')}/>
                 <SearchBar>
                     <input 
                         type="text" 
@@ -52,9 +58,7 @@ export default function Header() {
                 </SearchBar>
                 <section>
                     <div>
-                        <Link to={'/user'}>
-                            <AiOutlineUser size={30} />
-                        </Link>
+                        <AiOutlineUser size={30} onClick={account}/>
                         <p>Minha conta</p>
                     </div>
                     <div>

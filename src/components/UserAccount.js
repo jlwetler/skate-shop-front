@@ -4,7 +4,7 @@ import UserContext from '../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import UserBox from './components/UserBox'
+import UserBox from './UserBox';
 import { FaUserCircle } from "react-icons/fa";
 
 
