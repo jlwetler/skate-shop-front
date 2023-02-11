@@ -27,7 +27,15 @@ export default function Product() {
     },[]);
 
     function addToCart (product) {
+        
+        for (let i = 0; i < cart.length; i++) {
+            if (cart[i].name === product.name) {
+              alert('Produto já consta no carrinho!');
+              return;
+            }
+        }
         setCart([...cart, {...product, quantity}])
+        alert('Produto adicionado ao carrinho!')
     }
     console.log(cart);
     return <>

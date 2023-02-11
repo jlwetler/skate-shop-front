@@ -52,6 +52,9 @@ const CartBox = styled.div `
             border: none;
         }
     }
+    main {
+        margin-left: 5vw;
+    }
     img {
         width: 90px;
         height: 120px;

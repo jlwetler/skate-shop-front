@@ -58,7 +58,7 @@ export default function Header() {
                 </SearchBar>
                 <section>
                     <div>
-                        <AiOutlineUser size={30} onClick={account}/>
+                        <AiOutlineUser size={30} onClick={account} style={{cursor:'pointer'}}/>
                         <p>Minha conta</p>
                     </div>
                     <div>

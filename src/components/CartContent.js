@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 import { useState, useEffect, useContext } from 'react';
 import CartContext from '../contexts/CartContext';
+import UserContext from '../contexts/UserContext';
+import { useNavigate } from 'react-router-dom';
 import { BiTrash } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export default function CartContent() {
     const { cart, setCart} = useContext(CartContext);
     const [totalPrice, setTotalPrice] = useState(0);
+    const { user } = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
             const total = cart.reduce((total, { price, quantity }) => 
@@ -58,6 +62,7 @@ export default function CartContent() {
                   <p style={{ color: "#961322" }}>
                     R$ {(product.price / 100).toFixed(2)}
                   </p>
+                  <p>Estoque: {product.stock}</p>
                 </span>
               </div>
               <span className="quantity item">
@@ -84,6 +89,7 @@ export default function CartContent() {
             </div>
           ))}
         </section>
+        <main>
         <TotalOrder>
           <ul>
             <li>
@@ -106,6 +112,13 @@ export default function CartContent() {
             </p>
           </ul>
         </TotalOrder>
+        <Button>
+          { user.length === 0 ? 
+            <span onClick={() => navigate('/login')}>Faça login para finalizar a compra</span> :
+            <span><CartIcon /> Finalizar compra </span>
+          }
+        </Button>
+        </main>
     </>
 }
 
@@ -114,14 +127,19 @@ const TrashIcon = styled(BiTrash)`
     margin-left: 15px;
 `;
 
+const CartIcon = styled(AiOutlineShoppingCart)`
+  font-size: 18px;
+  margin-right: 8px;
+`;
+
 const TotalOrder = styled.div `
-    margin-left: 5vw;
     padding: 20px;
     width: 25vw;
     height: 30px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
     border-radius: 30px;
     border-box: 1px solid;
+    margin-bottom: 3vh;
     li {
         width: calc(25vw - 40px);
         margin: 12px 0;
@@ -137,3 +155,21 @@ const TotalOrder = styled.div `
     }
 `;
 
+const Button = styled.button `
+  font-family: 'Righteous';
+  font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  border-radius: 15px;
+  color: #ffffff;
+  width: 25vw;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+  :hover {
+    background: #4b5051;
+  }
+`
