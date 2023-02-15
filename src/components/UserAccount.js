@@ -17,22 +17,22 @@ export default function UserAccount () {
     return <>
         <Header/>
             <UserContainer>
-                <UserBox name={user.name} />
+                <UserBox />
                 <UserInfo>
                     <section>
                         <header><FaUserCircle /> Minha conta</header>
                         <div>
                             <div>
                                 <h1>Dados cadastrais</h1>
-                                <p>Nome: {user.name}</p>
+                                <p>Nome: {user.name} {user.lastName}</p>
                                 <p>Email: {user.email}</p>
-                                <p>Celular:</p>
+                                <p>Celular: {user.phone}</p>
                             </div>
                             <div>
                                 <h1>Endereço de entrega</h1>
-                                <p>Endereço: {user.address}</p>
+                                <p>Endereço: {user.street}</p>
                                 <p>CEP: {user.cep}</p>
-                                <p>Bairro: {user.bairro}</p>
+                                <p>Bairro: {user.district}</p>
                                 <p>Cidade/UF: {user.city}</p>
                             </div>
                         </div>

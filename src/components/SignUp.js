@@ -9,10 +9,12 @@ export default function SignUp() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [name, setName] = useState("");
-    const [address, setAddress] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [street, setStreet] = useState("");
     const [cep, setCep] = useState("");
-    const [bairro, setBairro] = useState("");
+    const [district, setDistrict] = useState("");
     const [city, setCity] = useState("");
+    const [phone, setPhone] = useState("");
     const [loading, setLoading] = useState(true);
     const [showAddress, setShowAddress] = useState(false);
     const navigate = useNavigate();
@@ -27,7 +29,7 @@ export default function SignUp() {
             return;
         }
         setLoading(false);
-        const body = {name, email, password};
+        const body = {name, lastName, email, password};
 
         axios.post('http://localhost:4000/sign-up', body)
         .then(() => {
@@ -47,7 +49,7 @@ export default function SignUp() {
 
     function sendAddressData() {
         setLoading(false);
-        const body = { address, cep, bairro, city, email };
+        const body = { street, cep, district, city, email };
 
         axios.post('http://localhost:4000/sign-up/address', body)
         .then(() => {
@@ -70,6 +72,13 @@ export default function SignUp() {
                 placeholder="Nome" 
                 value={name} 
                 onChange={e => setName(e.target.value)} 
+                required
+            />
+            <input 
+                type="text" 
+                placeholder="Sobrenome" 
+                value={lastName} 
+                onChange={e => setLastName(e.target.value)} 
                 required
             />
             <input 
@@ -104,8 +113,8 @@ export default function SignUp() {
         <input 
             type="text" 
             placeholder="Endereço (Rua, nº e complemento)" 
-            value={address} 
-            onChange={e => setAddress(e.target.value)} 
+            value={street} 
+            onChange={e => setStreet(e.target.value)} 
             required
         />
         <input 
@@ -118,8 +127,8 @@ export default function SignUp() {
         <input 
             type="text" 
             placeholder="Bairro" 
-            value={bairro} 
-            onChange={e => setBairro(e.target.value)} 
+            value={district} 
+            onChange={e => setDistrict(e.target.value)} 
             required
         />
         <input 
@@ -129,13 +138,19 @@ export default function SignUp() {
             onChange={e => setCity(e.target.value)} 
             required
         />
-        <button 
-            onClick={sendAddressData}>{loading ? 'Cadastrar' : <Loading/>}
+        <input 
+            type="number" 
+            placeholder="Celular com DDD" 
+            value={phone} 
+            onChange={e => setPhone(e.target.value)} 
+            required
+        />
+        <button onClick={sendAddressData}>
+            {loading ? 'Cadastrar' : <Loading/>}
         </button>
         </SignContainer>
         }
         </>
-
 }
 
 

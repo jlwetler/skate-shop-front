@@ -23,7 +23,7 @@ export default function Login() {
         axios.post('http://localhost:4000/login', body)
         .then((response) => {
             setUser(response.data);
-            navigate('/');
+            navigate('/user');
         })
         .catch(error => {
             console.log(error.response.status)

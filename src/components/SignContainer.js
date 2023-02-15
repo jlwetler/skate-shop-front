@@ -8,7 +8,7 @@ export default styled.div`
     align-items: center;
     margin-right: 2vw;
     img {
-        width: 120px;
+        width: 175px;
         margin-bottom: 10px;
     }
     input {
