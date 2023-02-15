@@ -5,38 +5,44 @@ import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import UserBox from './UserBox';
-import { FaUserCircle } from "react-icons/fa";
-
+import MyAccount from './MyAccount';
+import { FaUserCircle, FaStar } from "react-icons/fa";
+import { GoListUnordered } from "react-icons/go";
 
 export default function UserAccount () {
     const { user } = useContext(UserContext);
+    const [showAccount, setShowAccount] = useState(true);
+    const [showOrders, setShowOrders] = useState(false);
+    const [showDesireList, setShowDesireList] = useState(false);
     const navigate = useNavigate();
-    console.log(user);
+
     if (user.length === 0) navigate('/login');
-    
+
     return <>
         <Header/>
             <UserContainer>
-                <UserBox />
+                <UserBox 
+                    setShowAccount={ setShowAccount }
+                    setShowOrders={ setShowOrders }
+                    setShowDesireList={ setShowDesireList }
+                />
                 <UserInfo>
-                    <section>
-                        <header><FaUserCircle /> Minha conta</header>
-                        <div>
+                    {showAccount && <MyAccount />}
+                    
+                    {showOrders &&
+                        <section>
+                            <header><GoListUnordered /> Meus pedidos</header>
+                            
+                        </section>
+                    }
+                    {showDesireList &&
+                        <section>
+                            <header><FaStar /> Lista de desejos</header>
                             <div>
-                                <h1>Dados cadastrais</h1>
-                                <p>Nome: {user.name} {user.lastName}</p>
-                                <p>Email: {user.email}</p>
-                                <p>Celular: {user.phone}</p>
+                                
                             </div>
-                            <div>
-                                <h1>Endereço de entrega</h1>
-                                <p>Endereço: {user.street}</p>
-                                <p>CEP: {user.cep}</p>
-                                <p>Bairro: {user.district}</p>
-                                <p>Cidade/UF: {user.city}</p>
-                            </div>
-                        </div>
-                    </section>
+                        </section>
+                    }
                 </UserInfo>
             </UserContainer>
         <Footer/>
@@ -71,7 +77,39 @@ const UserInfo = styled.div`
         font-size: 18px;
         margin-bottom: 20px;
     }
+    h2 {
+        margin-top: 2vh;
+    }
     p {
-        margin-bottom: 5px;
+        margin-bottom: 1vh;
+    }
+    .order-items {
+        width: 47vw;
+        height: 40px;
+        align-items: center;
+        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+        border-radius: 30px;
+        border-box: 1px solid;
+    }
+    .description {
+        display: flex;
+        align-items: center;
+        height: 30px;
+        padding: 5px;
+    }
+    .product {
+        margin-left: 20px;
+        width: 20vw;
+        p {
+            margin: 10px 0;
+        }
+    }
+    .quantity {
+        text-align: center;
+        width: 7vw;
+    }
+    .subtotal {
+        width: 10vw;
+        text-align: right;
     }
 `; 

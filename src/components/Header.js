@@ -107,6 +107,7 @@ const NavBar = styled.div `
     justify-content: space-around;
     img {
         width: 80px;
+        cursor: pointer;
     }
     section {
         display: flex;

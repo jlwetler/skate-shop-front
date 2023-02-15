@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import axios from 'axios';
 import { useState, useEffect, useContext } from 'react';
 import CartContext from '../contexts/CartContext';
 import UserContext from '../contexts/UserContext';
@@ -11,6 +12,12 @@ export default function CartContent() {
     const [totalPrice, setTotalPrice] = useState(0);
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
+    const frete = totalPrice > 29999 ? 0 : 30;
+    const config = {
+      headers: {
+          "Authorization": `Bearer ${user.token}`
+      }
+    }
 
     useEffect(() => {
             const total = cart.reduce((total, { price, quantity }) => 
@@ -44,6 +51,24 @@ export default function CartContent() {
         })
         setCart(newCart);
         newCart = [];
+    }
+
+    function sendOrder() {
+      
+      const cartInfo = cart.map(({id, quantity, price}) => ({id, quantity, price}))
+      
+      const orderPrice = totalPrice + frete;
+      const body = { cartInfo, orderPrice}
+      
+      axios.post('http://localhost:4000/finish-order', body, config)
+      .then(() => {
+        alert('Compra registrada!');
+        setCart([]);
+        navigate('/user');
+      })
+      .catch(()=>{
+        alert('Erro na compra!');
+      })
     }
 
     return <>
@@ -98,11 +123,11 @@ export default function CartContent() {
             </li>
             <li>
               <nav>Frete :</nav>
-              <nav>R$ 30.00</nav>
+              <nav>R$ {frete.toFixed(2)}</nav>
             </li>
             <li>
               <nav>Total :</nav>
-              <nav>R$ {(totalPrice / 100 + 30).toFixed(2)}</nav>
+              <nav>R$ {(totalPrice / 100 + frete).toFixed(2)}</nav>
             </li>
             <p>
               R$ {((totalPrice / 100 + 30) * 0.95).toFixed(2)} com 5% de desconto no pix
@@ -115,7 +140,7 @@ export default function CartContent() {
         <Button>
           { user.length === 0 ? 
             <span onClick={() => navigate('/login')}>Faça login para finalizar a compra</span> :
-            <span><CartIcon /> Finalizar compra </span>
+            <span onClick={sendOrder}><CartIcon /> Finalizar compra </span>
           }
         </Button>
         </main>

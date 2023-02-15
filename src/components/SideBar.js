@@ -29,7 +29,7 @@ export default function Sidebar ({category, subCategories, brands, setProducts, 
         const queryString = encodeURIComponent(JSON.stringify(selectedBrands));
         const price = maxPrice*100;
         const order = orderBy !== '' ? orderBy.replace(' ','') : ''
-        console.log(order);
+
     console.log(queryString)
         axios.get(`http://localhost:4000/filter/products/${category}?subCategory=${subCategory}&query=${queryString}&price=${price}&order=${order}`)
         .then((response) => {
@@ -40,7 +40,7 @@ export default function Sidebar ({category, subCategories, brands, setProducts, 
         })
     }
 
-    return <Filters>
+    return <Filters subCategory={subCategory}>
         <div className='title'>
             Filtros
         </div>
@@ -48,7 +48,12 @@ export default function Sidebar ({category, subCategories, brands, setProducts, 
             {category}
         </div>
         {subCategories.map(sub => 
-            <div className='sub-category' onClick={() => {selectSubCategory(sub.name)}} key={sub.id}>
+            <div 
+                className='sub-category' 
+                onClick={() => {selectSubCategory(sub.name)}} 
+                key={sub.id}
+                style={subCategory === sub.name ? {borderBottom: '1px solid #000'} : {}}
+            >
             {sub.name}
             </div>
         )}

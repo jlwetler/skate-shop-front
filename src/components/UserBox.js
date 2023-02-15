@@ -7,7 +7,7 @@ import { GoListUnordered } from "react-icons/go";
 import { IoIosLogOut } from "react-icons/io";
 
 
-export default function UserBox() {
+export default function UserBox({ setShowAccount, setShowOrders, setShowDesireList }) {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
 
@@ -20,10 +20,18 @@ export default function UserBox() {
     return <Container>
         <section>
             <h1><FaUser size={20} /> {user.name} </h1>
-            <p><FaUserCircle /> Minha conta</p>
-            <p><GoListUnordered/> Meus pedidos</p>
-            <p><FaStar/> Lista de desejos</p>
-            <p onClick={logout}><IoIosLogOut /> Sair da conta</p>
+            <p onClick={() => {setShowAccount(true); setShowOrders(false); setShowDesireList(false)}}>
+                <FaUserCircle /> Minha conta
+            </p>
+            <p onClick={() => {setShowOrders(true); setShowAccount(false); setShowDesireList(false)}}>
+                <GoListUnordered/> Meus pedidos
+            </p>
+            <p onClick={() => {setShowDesireList(true); setShowAccount(false); setShowOrders(false)}}>
+                <FaStar/> Lista de desejos
+            </p>
+            <p onClick={logout}><IoIosLogOut />
+                Sair da conta
+            </p>
         </section>
     </Container>
 }
