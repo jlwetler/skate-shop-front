@@ -12,7 +12,7 @@ export default function CartContent() {
     const [totalPrice, setTotalPrice] = useState(0);
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
-    const frete = totalPrice > 29999 ? 0 : 30;
+    const frete = totalPrice > 29999 ? 0 : 3000;
     const config = {
       headers: {
           "Authorization": `Bearer ${user.token}`
@@ -123,7 +123,7 @@ export default function CartContent() {
             </li>
             <li>
               <nav>Frete :</nav>
-              <nav>R$ {frete.toFixed(2)}</nav>
+              <nav>R$ {(frete/100).toFixed(2)}</nav>
             </li>
             <li>
               <nav>Total :</nav>

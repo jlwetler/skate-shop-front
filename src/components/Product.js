@@ -51,13 +51,16 @@ export default function Product() {
                 <h2 style={{color: '#444444'}}>
                     ou em até 6x de R$ {(product.price/600).toFixed(2)}
                 </h2>
-                <span>Estoque: {product.stock}</span>
+                {product.stock > 0 ? 
+                    <span>Estoque: {product.stock}</span> : 
+                    <span>Out of stock!</span>
+                }
                 <div>
                     <span onClick={()=> setQuantity(quantity - 1)}>-</span>
                     <p>{quantity}</p>
                     <span onClick={()=> setQuantity(quantity + 1)}> +</span>
                 </div>    
-                <button onClick={() => addToCart(product)}>
+                <button onClick={() => addToCart(product)} disabled={product.stock > 0 ? false : true}>
                     <AiOutlineShoppingCart/> Adicionar ao carrinho
                 </button>
             </section>

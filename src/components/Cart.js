@@ -58,6 +58,7 @@ const CartBox = styled.div `
     img {
         width: 90px;
         height: 120px;
+        margin-right: 1vw;
     }
     .description {
         display: flex;

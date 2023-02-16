@@ -6,8 +6,8 @@ import Header from './Header';
 import Footer from './Footer';
 import UserBox from './UserBox';
 import MyAccount from './MyAccount';
-import { FaUserCircle, FaStar } from "react-icons/fa";
-import { GoListUnordered } from "react-icons/go";
+import MyOrders from './MyOrders';
+import { FaStar } from "react-icons/fa";
 
 export default function UserAccount () {
     const { user } = useContext(UserContext);
@@ -29,12 +29,8 @@ export default function UserAccount () {
                 <UserInfo>
                     {showAccount && <MyAccount />}
                     
-                    {showOrders &&
-                        <section>
-                            <header><GoListUnordered /> Meus pedidos</header>
-                            
-                        </section>
-                    }
+                    {showOrders && <MyOrders />}
+                    
                     {showDesireList &&
                         <section>
                             <header><FaStar /> Lista de desejos</header>
@@ -78,14 +74,21 @@ const UserInfo = styled.div`
         margin-bottom: 20px;
     }
     h2 {
-        margin-top: 2vh;
+        margin-top: 5vh;
+        font-size: 20px;
     }
     p {
         margin-bottom: 1vh;
     }
+    ul {
+        padding: 1vh 0;
+    }
+    li {
+        display: flex;
+        margin: 1vh 0;
+    }
     .order-items {
         width: 47vw;
-        height: 40px;
         align-items: center;
         box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
         border-radius: 30px;
@@ -96,6 +99,7 @@ const UserInfo = styled.div`
         align-items: center;
         height: 30px;
         padding: 5px;
+        border-bottom: 1px solid #d9e0dc;
     }
     .product {
         margin-left: 20px;
@@ -111,5 +115,11 @@ const UserInfo = styled.div`
     .subtotal {
         width: 10vw;
         text-align: right;
+    }
+    .total {
+        width: 45vw;
+        margin: 2vh 0;
+        text-align: right;
+        color: #961322;
     }
 `; 
