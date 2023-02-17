@@ -13,8 +13,13 @@ export default function Product() {
     const { cart, setCart} = useContext(CartContext);
     const { product } = useContext(ProductContext);
     
-    if(quantity < 1) setQuantity(1);
-    if(quantity > product.stock) setQuantity(product.stock);
+    if(quantity < 0 && product.stock === 0) {
+        setQuantity(0);
+    } else if(quantity < 1 && product.stock !== 0) {
+        setQuantity(1);
+    } else if(quantity > product.stock) {
+        setQuantity(product.stock);
+    }
 
     useEffect(()=> {
         axios.get(`http://localhost:4000/brands/${product.brandId}`)
@@ -37,7 +42,7 @@ export default function Product() {
         setCart([...cart, {...product, quantity}])
         alert('Produto adicionado ao carrinho!')
     }
-    console.log(cart);
+
     return <>
         <Header />
         <ProductInfo>
@@ -51,7 +56,7 @@ export default function Product() {
                 <h2 style={{color: '#444444'}}>
                     ou em até 6x de R$ {(product.price/600).toFixed(2)}
                 </h2>
-                {product.stock > 0 ? 
+                {product.stock !== 0 ? 
                     <span>Estoque: {product.stock}</span> : 
                     <span>Out of stock!</span>
                 }

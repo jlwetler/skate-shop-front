@@ -30,8 +30,7 @@ export default function Sidebar ({category, subCategories, brands, setProducts, 
         const price = maxPrice*100;
         const order = orderBy !== '' ? orderBy.replace(' ','') : ''
 
-    console.log(queryString)
-        axios.get(`http://localhost:4000/filter/products/${category}?subCategory=${subCategory}&query=${queryString}&price=${price}&order=${order}`)
+        axios.get(`http://localhost:4000/products/filter/${category}?subCategory=${subCategory}&query=${queryString}&price=${price}&order=${order}`)
         .then((response) => {
             setProducts(response.data);
         })

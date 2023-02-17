@@ -49,13 +49,13 @@ export default function SignUp() {
 
     function sendAddressData() {
         setLoading(false);
-        const body = { street, cep, district, city, email };
+        const body = { street, cep, district, city, email, phone };
 
         axios.post('http://localhost:4000/sign-up/address', body)
         .then(() => {
             setLoading(true);
             setShowAddress(!showAddress);
-            navigate('/user');
+            alert('Cadastro realizado com sucesso!')
         })
         .catch(error => {
             console.log(error);

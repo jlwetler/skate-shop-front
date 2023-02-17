@@ -28,7 +28,6 @@ export default function Header() {
     },[]);
 
     function searchItem() {
-        console.log(search);
         navigate(`/search/${search}`);
     }
 

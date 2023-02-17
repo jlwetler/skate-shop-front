@@ -19,8 +19,6 @@ export default function MyAccount() {
         })
     }, [])
 
-    console.log(orders);
-
   return <>
       <section>
         <header>
