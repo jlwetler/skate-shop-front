@@ -55,7 +55,8 @@ export default function SignUp() {
         .then(() => {
             setLoading(true);
             setShowAddress(!showAddress);
-            alert('Cadastro realizado com sucesso!')
+            alert('Cadastro realizado com sucesso!');
+            navigate('/');
         })
         .catch(error => {
             console.log(error);
