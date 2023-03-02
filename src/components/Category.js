@@ -53,7 +53,6 @@ export default function Category() {
                     setOrderBy={setOrderBy}
                     category={category}
                 />
-                   
             </SearchPage>
             <Footer/>
         </>
