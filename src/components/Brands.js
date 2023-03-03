@@ -5,8 +5,7 @@ import { AiOutlineLeftCircle, AiOutlineRightCircle } from "react-icons/ai";
 import { brandsList } from '../images/brands';
 
 export default function Brands() {
-    //const brandsArray = [element, girl, grizzly, independent, planB, real, spitfire, vans, high, nikesb, ous];
-    const [brands, setBrands] = useState({})
+    const [setBrands] = useState({})
     
     useEffect(()=> {axios.get('http://localhost:4000/brands')
         .then((response) => {
