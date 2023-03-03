@@ -13,7 +13,6 @@ import {
 
 export default function Header() {
     const [ search, setSearch] = useState('');
-    const [ subCategories, setSubCategories] = useState('');
     const [categories, setCategories] = useState([]);
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
@@ -36,7 +35,7 @@ export default function Header() {
     }
 
     return (
-        <>
+        <HeaderContainer>
             <Top>
                 <span>Frete grátis nas compras acima de R$299,99 para todo o Brasil</span>
             </Top>
@@ -83,7 +82,7 @@ export default function Header() {
                     <span>SALE </span><AiOutlineDownCircle size={18}/>
                 </div>
             </CategoriesBar>  
-        </>
+        </HeaderContainer>
     )
 }
 
@@ -93,12 +92,12 @@ const Top = styled.div`
     justify-content: center;
     background: #000;
     color: #fff;
-    width: 100vw;
+    width: 100%;
     height: 40px;
 `;
 
 const NavBar = styled.div `
-    width: 100vw;
+    width: 100%;
     height: 90px;
     padding: 10px 20px;
     display: flex;
@@ -152,7 +151,7 @@ const CategoriesBar = styled.div`
     align-items: center;
     justify-content: space-around;
     padding: 0 100px;
-    width: 100vw;
+    width: 100%;
     height: 45px;
     background: #000;
     color: #fff;
@@ -168,4 +167,7 @@ const CategoriesBar = styled.div`
         color: lightblue;
         cursor: pointer;
     }
+`;
+
+const HeaderContainer = styled.header`
 `;
