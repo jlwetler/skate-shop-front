@@ -44,7 +44,6 @@ export default function SignUp() {
             }
             setLoading(true);
         })
-
     }
 
     function sendAddressData() {
