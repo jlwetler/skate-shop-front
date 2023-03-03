@@ -6,7 +6,7 @@ import {
 import React, { useState } from 'react';
 import Home from './components/Home';
 import Login from  './components/Login';
-import Category from './components/Category';
+import StoreContent from './components/StoreContent';
 import Product from './components/Product';
 import Cart from './components/Cart';
 import Search from './components/Search';
@@ -29,7 +29,7 @@ export default function App() {
               <Route path='/' element={<Home />} />
               <Route path='login' element={<Login />} />
               <Route path='user' element={<UserAccount />} />
-              <Route path='categoria/:category' element={<Category />} />
+              <Route path='categoria/:category' element={<StoreContent />} />
               <Route path='produto/:product' element={<Product />} />
               <Route path='carrinho' element={<Cart />} />
               <Route path='search/:search' element={<Search />} />

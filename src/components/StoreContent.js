@@ -7,7 +7,7 @@ import Sidebar from './SideBar';
 import Footer from './Footer';
 import ProductsContainer from './ProductsContainer';
 
-export default function Category() {
+export default function StoreContent() {
     const { category } = useParams();
     const [ subCategories, setSubCategories] = useState([]);
     const [brands, setBrands] = useState([]);
@@ -52,8 +52,7 @@ export default function Category() {
                     orderBy={orderBy}
                     setOrderBy={setOrderBy}
                     category={category}
-                />
-                   
+                />                  
             </SearchPage>
             <Footer/>
         </>
@@ -62,5 +61,6 @@ export default function Category() {
 
 const SearchPage = styled.div `
     display: flex;
+    min-height: 115vh;
 `;
 
