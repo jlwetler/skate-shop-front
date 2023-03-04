@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AiOutlineCaretDown } from "react-icons/ai";
 
 export default function Sidebar ({
@@ -30,6 +30,10 @@ export default function Sidebar ({
     const selectSubCategory = (sub) => {
         setSubCategory(sub);
     }
+
+    useEffect(() => {
+        filteredSearch();
+      }, [subCategory, orderBy]);
 
     const filteredSearch = () => {
         const queryString = encodeURIComponent(JSON.stringify(selectedBrands));
@@ -70,7 +74,7 @@ export default function Sidebar ({
             <input 
                 type="range" 
                 min="0" 
-                max="1500"  
+                max="1200"  
                 id="priceRange" 
                 value={maxPrice} 
                 className='price'

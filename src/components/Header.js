@@ -35,55 +35,62 @@ export default function Header() {
     }
 
     return (
-        <HeaderContainer>
-            <Top>
-                <span>Frete grátis nas compras acima de R$299,99 para todo o Brasil</span>
-            </Top>
-            <NavBar>
-                <img src={logo} alt='logo' onClick={() => navigate('/')}/>
-                <SearchBar>
-                    <input 
-                        type="text" 
-                        placeholder="Pesquisar" 
-                        value={search} 
-                        onChange={e => setSearch(e.target.value)} 
-                        required
-                    />
-                    <div onClick={searchItem}>
-                        <AiOutlineSearch size={30} />
-                    </div>
-                    
-                </SearchBar>
-                <section>
-                    <div>
-                        <AiOutlineUser size={30} onClick={account} style={{cursor:'pointer'}}/>
-                        <p>Minha conta</p>
-                    </div>
-                    <div>
-                        <Link to={'/carrinho'}>
-                            <AiOutlineShoppingCart size={30} />
-                        </Link>
-                        <p>Meu carrinho</p>
-                    </div>
-                </section>
-            </NavBar>
-            <CategoriesBar>
-                {categories.map((category)=>
-                    <Link to={`/categoria/${category.name}`} key={category.id}>
-                        <div>
-                            <span>{category.name}</span><AiOutlineDownCircle size={18}/>
-                        </div>
-                    </Link>
-                )}
-                <div>
-                    <span>Marcas </span><AiOutlineDownCircle size={18}/>
-                </div>
-                <div>
-                    <span>SALE </span><AiOutlineDownCircle size={18}/>
-                </div>
-            </CategoriesBar>  
-        </HeaderContainer>
-    )
+      <HeaderContainer>
+        <Top>
+          <span>
+            Frete grátis nas compras acima de R$299,99 para todo o Brasil
+          </span>
+        </Top>
+        <NavBar>
+          <img src={logo} alt="logo" onClick={() => navigate("/")} />
+          <SearchBar>
+            <input
+              type="text"
+              placeholder="Pesquisar"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              required
+            />
+            <div onClick={searchItem}>
+              <AiOutlineSearch size={30} />
+            </div>
+          </SearchBar>
+          <section>
+            <div 
+              onClick={account} 
+              style={{ cursor: "pointer" }}
+            >
+              <AiOutlineUser size={30} />
+              <p>Minha conta</p>
+            </div>
+            <div>
+              <Link to={"/carrinho"}>
+                <AiOutlineShoppingCart size={30} />
+                <p>Meu carrinho</p>
+              </Link>
+            </div>
+          </section>
+        </NavBar>
+        <CategoriesBar>
+          {categories.map((category) => (
+            <Link to={`/categoria/${category.name}`} key={category.id}>
+              <div>
+                <span>{category.name}</span>
+                <AiOutlineDownCircle size={18} />
+              </div>
+            </Link>
+          ))}
+          <div>
+            <span>Marcas </span>
+            <AiOutlineDownCircle size={18} />
+          </div>
+          <div>
+            <span>SALE </span>
+            <AiOutlineDownCircle size={18} />
+          </div>
+        </CategoriesBar>
+      </HeaderContainer>
+    );
 }
 
 const Top = styled.div`

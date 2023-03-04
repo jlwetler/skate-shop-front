@@ -11,12 +11,14 @@ export default function Cart() {
     return <>
         <Header/>
         <Title>Meu carrinho</Title>
-        <CartBox cart={cart}>
-            {cart.length === 0 ? 
-                <EmptyCart>Nenhum produto adicionado ao carrinho ainda</EmptyCart> :
-                <CartContent />
-            }
-        </CartBox>   
+        <CartContainer>
+            <CartBox cart={cart}>
+                {cart.length === 0 ? 
+                    <EmptyCart>Nenhum produto adicionado ao carrinho ainda</EmptyCart> :
+                    <CartContent />
+                }
+            </CartBox>   
+        </CartContainer>
         <Footer/>
     </>
 }
@@ -32,10 +34,14 @@ const EmptyCart = styled.span`
     height: 30vh;
 `
 
+const CartContainer = styled.div`
+    min-height: 70vh;
+`
+
 const CartBox = styled.div `
     display: flex;
     width: 80vw;
-    margin: ${(props) => props.cart.length === 1 ? '10px 10vw 20vh 10vw' : '10px 10vw'};
+    margin: ${(props) => props.cart.length === 1 ? '10px 10vw 20vh 10vw' : '10vh 10vw'};
     section {
         width: 50vw;
         align-items: center;
