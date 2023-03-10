@@ -73,7 +73,7 @@ const Products = styled.div`
     cursor: pointer;
   }
   div {
-    margin: 20px;
+    margin: 20px 13px;
   }
   button {
     background: #6bc6d6;
@@ -114,5 +114,4 @@ const ProductsWrapper = styled.div`
 const ProductBox = styled.div`
   width: 280px;
   text-align: center;
-  margin: 20px 0;
 `;

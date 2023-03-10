@@ -78,14 +78,14 @@ export default function CartContent() {
   return (
     <>
       <CartProducts>
-        <span className="description">
-          <span className="product">Produto</span>
-          <span className="quantity">Quantidade</span>
-          <span className="subtotal">Subtotal</span>
-        </span>
+        <Description>
+          <Product>Produto</Product>
+          <Quantity>Quantidade</Quantity>
+          <Subtotal>Subtotal</Subtotal>
+        </Description>
         {cart.map((product) => (
           <ProductBox key={product.id}>
-            <div className="product">
+            <Product>
               <img src={product.image} alt="product logo" />
               <span>
                 <p>{product.name}</p>
@@ -94,8 +94,8 @@ export default function CartContent() {
                 </p>
                 <p>Estoque: {product.stock}</p>
               </span>
-            </div>
-            <span className="quantity item">
+            </Product>
+            <ProductQuantity>
               <p
                 onClick={() => changeItem(product, "-")}
                 style={{ cursor: "pointer" }}
@@ -109,15 +109,15 @@ export default function CartContent() {
               >
                 +
               </p>
-            </span>
-            <span className="subtotal">
+            </ProductQuantity>
+            <Subtotal>
               <p>R$ {((product.price * product.quantity) / 100).toFixed(2)}</p>
-            </span>
+            </Subtotal>
             <TrashIcon size={25} onClick={() => deleteItem(product)} />
           </ProductBox>
         ))}
       </CartProducts>
-      <main>
+      <FinishOrderBox>
         <TotalOrder>
           <ul>
             <li>
@@ -150,7 +150,7 @@ export default function CartContent() {
             </span>
           )}
         </Button>
-      </main>
+      </FinishOrderBox>
     </>
   );
 }
@@ -168,7 +168,7 @@ const CartIcon = styled(AiOutlineShoppingCart)`
 const TotalOrder = styled.div`
   padding: 20px;
   width: 25vw;
-  height: 30px;
+  height: 150px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
   border-radius: 30px;
   border-box: 1px solid;
@@ -195,13 +195,12 @@ const Button = styled.button`
   justify-content: center;
   align-items: center;
   background: #000;
-  border-radius: 15px;
+  border-radius: 25px;
   color: #ffffff;
   width: 25vw;
   height: 40px;
   border: none;
   cursor: pointer;
-  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
   :hover {
     background: #4b5051;
   }
@@ -224,3 +223,43 @@ const ProductBox = styled.div`
     border: none;
   }
 `;
+
+const Description = styled.section`
+  display: flex;
+  align-items: center;
+  height: 30px;
+  padding: 5px;
+`;
+
+const Product = styled.div`
+  margin-left: 50px;
+  width: 20vw;
+  margin-right: 3vw;
+  p {
+      margin: 10px 0;
+  }
+`;
+
+const Quantity = styled.div`
+  text-align: center;
+  width: 7vw;
+`;
+
+const Subtotal = styled.div`
+  margin-left:6vw;
+  width: 6vw;
+`;
+
+const ProductQuantity = styled.span`
+  text-align: center;
+  width: 7vw;
+  display: flex;
+  font-size: 20px;
+  justify-content: space-around;
+  border: 1px solid #000;
+  border-radius: 10px;
+`;
+
+const FinishOrderBox = styled.section`
+  margin-left: 5vw;
+`

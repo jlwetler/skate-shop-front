@@ -25,9 +25,10 @@ export default function Cart() {
 
 const Title = styled.div`
     text-align: center;
-    padding: 30px;
+    padding: 25px;
     font-size: 25px;
 `
+
 const EmptyCart = styled.span`
     margin: 40px auto;
     font-size: 20px;
@@ -35,7 +36,7 @@ const EmptyCart = styled.span`
 `
 
 const CartContainer = styled.div`
-    min-height: 70vh;
+    min-height: 80vh;
 `
 
 const CartBox = styled.div `
@@ -45,45 +46,11 @@ const CartBox = styled.div `
     div {
         display:flex;
         align-items: center;
-        height: 150px;
-        border-top: 1px solid #d9e0dc;
-    }
-    main {
-        margin-left: 5vw;
     }
     img {
         width: 90px;
         height: 120px;
         margin-right: 1vw;
-    }
-    .description {
-        display: flex;
-        align-items: center;
-        height: 30px;
-        padding: 5px;
-    }
-    .product {
-        margin-left: 50px;
-        width: 20vw;
-        margin-right: 3vw;
-        p {
-            margin: 10px 0;
-        }
-    }
-    .quantity {
-        text-align: center;
-        width: 7vw;
-    }
-    .item {
-        display: flex;
-        font-size: 20px;
-        justify-content: space-around;
-        border: 1px solid #000;
-        border-radius: 10px;
-    }
-    .subtotal {
-        width: 12vw;
-        text-align: right;
     }
 `;
 
