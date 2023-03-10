@@ -45,9 +45,9 @@ export default function Product() {
 
     return <>
         <Header />
-        <ProductInfo>
+        <ProductContainer>
             <img src={product.image} alt={product.name} />
-            <section>
+            <ProductInfo>
                 <h1>{product.name}</h1>
                 <img src={brand.image} alt={brand.name} />
                 <h2>
@@ -60,31 +60,27 @@ export default function Product() {
                     <span>Estoque: {product.stock}</span> : 
                     <span>Out of stock!</span>
                 }
-                <div>
+                <ProductQuantity>
                     <span onClick={()=> setQuantity(quantity - 1)}>-</span>
                     <p>{quantity}</p>
                     <span onClick={()=> setQuantity(quantity + 1)}> +</span>
-                </div>    
+                </ProductQuantity>    
                 <button onClick={() => addToCart(product)} disabled={product.stock > 0 ? false : true}>
                     <AiOutlineShoppingCart/> Adicionar ao carrinho
                 </button>
-            </section>
-        </ProductInfo>
+            </ProductInfo>
+        </ProductContainer>
         <Footer />
     </>
 }
 
-const ProductInfo = styled.div`
+const ProductContainer = styled.div`
     padding: 20px;
     display:flex;
     justify-content: center;
     & > img {
         width: 375 px;
         height: 500px;
-    }
-    section {
-        text-align: center;
-        padding: 20px;
     }
     h1 {
         font-size: 30px;
@@ -95,22 +91,6 @@ const ProductInfo = styled.div`
         color: #961322;
         margin: 20px 0;
     }
-    div {
-        display: flex;
-        width: 100px;
-        justify-content: center;
-        margin: 20px auto;
-        font-size: 25px;
-        border: 1px solid #000;
-        border-radius: 10px;
-        p {
-            width: 20px;
-        }
-        span {
-            margin: 0 10px;
-            cursor: pointer;
-        }
-    }
     button {
         background: lightgreen;
         font-family: 'Rubik', sans-serif;
@@ -120,3 +100,26 @@ const ProductInfo = styled.div`
         cursor: pointer;
     }
 `;
+
+const ProductInfo = styled.div`
+    text-align: center;
+    padding: 20px;
+
+`;
+
+const ProductQuantity = styled.div`
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    margin: 20px auto;
+    font-size: 25px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    p {
+        width: 20px;
+    }
+    span {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+`

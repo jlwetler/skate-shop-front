@@ -20,13 +20,10 @@ export default function CartContent() {
   };
 
   useEffect(() => {
-    console.log("CART", cart)
-    
     const total = cart.reduce(
       (total, { price, quantity }) => (total += price*quantity),
       0
     );
-    console.log("TOTAL", total)
     setTotalPrice(total);
   }, [cart]);
 
@@ -46,7 +43,7 @@ export default function CartContent() {
     }
     let newCart = [];
 
-    cart.map((p) => {
+    cart.map(p => {
       if (p === product) {
         p.quantity = quantity;
       }
@@ -80,14 +77,14 @@ export default function CartContent() {
 
   return (
     <>
-      <section>
+      <CartProducts>
         <span className="description">
           <span className="product">Produto</span>
           <span className="quantity">Quantidade</span>
           <span className="subtotal">Subtotal</span>
         </span>
         {cart.map((product) => (
-          <div key={product.id}>
+          <ProductBox key={product.id}>
             <div className="product">
               <img src={product.image} alt="product logo" />
               <span>
@@ -117,9 +114,9 @@ export default function CartContent() {
               <p>R$ {((product.price * product.quantity) / 100).toFixed(2)}</p>
             </span>
             <TrashIcon size={25} onClick={() => deleteItem(product)} />
-          </div>
+          </ProductBox>
         ))}
-      </section>
+      </CartProducts>
       <main>
         <TotalOrder>
           <ul>
@@ -207,5 +204,23 @@ const Button = styled.button`
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
   :hover {
     background: #4b5051;
+  }
+`;
+
+const CartProducts = styled.section`
+  width: 50vw;
+  align-items: center;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+  border-box: 1px solid;
+`;
+
+const ProductBox = styled.div`
+  display:flex;
+  align-items: center;
+  height: 150px;
+  border-top: 1px solid #d9e0dc;
+  & > div {
+    border: none;
   }
 `;

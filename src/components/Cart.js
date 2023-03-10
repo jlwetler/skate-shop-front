@@ -42,21 +42,11 @@ const CartBox = styled.div `
     display: flex;
     width: 80vw;
     margin: ${(props) => props.cart.length === 1 ? '10px 10vw 20vh 10vw' : '10vh 10vw'};
-    section {
-        width: 50vw;
-        align-items: center;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
-        border-radius: 30px;
-        border-box: 1px solid;
-    }
     div {
         display:flex;
         align-items: center;
         height: 150px;
         border-top: 1px solid #d9e0dc;
-        & > div {
-            border: none;
-        }
     }
     main {
         margin-left: 5vw;
