@@ -64,11 +64,6 @@ const UserInfo = styled.div`
             justify-content: space-between;
         }
     }
-    header {
-        font-size: 20px;
-        border-bottom: 1px solid #000;
-        height: 4vh;
-    }
     h1 {
         font-size: 18px;
         margin-bottom: 20px;
@@ -86,40 +81,5 @@ const UserInfo = styled.div`
     li {
         display: flex;
         margin: 1vh 0;
-    }
-    .order-items {
-        width: 47vw;
-        align-items: center;
-        box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.4);
-        border-radius: 30px;
-        border-box: 1px solid;
-    }
-    .description {
-        display: flex;
-        align-items: center;
-        height: 30px;
-        padding: 5px;
-        border-bottom: 1px solid #d9e0dc;
-    }
-    .product {
-        margin-left: 20px;
-        width: 20vw;
-        p {
-            margin: 10px 0;
-        }
-    }
-    .quantity {
-        text-align: center;
-        width: 7vw;
-    }
-    .subtotal {
-        width: 10vw;
-        text-align: right;
-    }
-    .total {
-        width: 45vw;
-        margin: 2vh 0;
-        text-align: right;
-        color: #961322;
     }
 `; 
