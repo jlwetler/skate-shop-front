@@ -5,7 +5,7 @@ import { FaUserCircle } from "react-icons/fa";
 export default function MyAccount() {
     const { user } = useContext(UserContext);
 
-    return <>
+    return (
         <section>
           <header>
             <FaUserCircle /> Minha conta
@@ -28,5 +28,5 @@ export default function MyAccount() {
             </div>
           </div>
         </section>
-      </>
+      );
 }

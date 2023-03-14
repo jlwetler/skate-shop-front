@@ -21,8 +21,7 @@ export default function MyAccount() {
     }, [])
 
   return (
-    <>
-      <section>
+    <section>
         <OrderHeader>
           <GoListUnordered /> Meus pedidos
         </OrderHeader>
@@ -41,8 +40,7 @@ export default function MyAccount() {
             </p>
             <p>CEP: {user.cep}</p>
           </div>
-        </div>
-        
+        </div>       
             {orders.map(order =>
                 <>
                     <h2>Itens do pedido #00{order.id}</h2>
@@ -81,9 +79,7 @@ export default function MyAccount() {
                     
                 </>
             )}
-          
-      </section>
-    </>
+    </section>
   );
 }
 
